@@ -51,9 +51,10 @@ export const MainChatGame = ({ apiKey }: { apiKey: string }) => {
                 const response = await openai.createCompletion({
                     model: 'text-davinci-003',
                     temperature: 0,
-                    max_tokens: 3500,
+                    max_tokens: 2000,
                     prompt: promptToSend,
                 })
+
                 if (response.data.choices[0].text) {
                     const parsedData: any = JSON.parse(
                         response.data.choices[0].text,

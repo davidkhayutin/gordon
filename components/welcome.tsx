@@ -16,7 +16,7 @@ export const Welcome = ({
                 knowledge on anything!
             </div>
             <div className="tw-my-2">
-                Whether it sports, your favorite tv show, mathematics or coding
+                Whether its sports, your favorite tv show, mathematics or coding
                 practice, this game can test your knowledge on your desired
                 subject!
             </div>
@@ -26,7 +26,7 @@ export const Welcome = ({
                 !!! This information is only stored in local state and can be
                 removed with a simple refresh of the screen. Without a real key
                 you wont be able to play this game. OpenAI gives you $18 of
-                credit to use over your first 3 month. Each question here takes
+                credit to use over your first 3 months. Each question here takes
                 about 1-3 cents. NOT BAD!!
                 <div className="tw-my-2 tw-text-white">
                     {' '}

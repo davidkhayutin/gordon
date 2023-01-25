@@ -41,6 +41,10 @@ export const Welcome = ({
                     </a>
                 </div>
             </div>
+
+            <div className="tw-my-6 tw-text-blue-10">
+                Sometimes the answers may not be perfect, but it tries its best!
+            </div>
             <div>
                 <input
                     value={prompt}

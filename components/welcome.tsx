@@ -16,21 +16,21 @@ export const Welcome = ({
                 knowledge on anything!
             </div>
             <div className="tw-my-2">
-                Whether its sports, your favorite tv show, mathematics or coding
-                practice, this game can test your knowledge on your desired
-                subject!
+                Whether it&apos;s sports, your favorite tv show, mathematics or
+                coding practice, this game can test your knowledge on your
+                desired subject!
             </div>
 
             <div className="tw-my-6 tw-text-blue-10">
-                To start, you will need to submit you OpenAI API key. Dont worry
-                !!! This information is only stored in local state and can be
-                removed with a simple refresh of the screen. Without a real key
-                you wont be able to play this game. OpenAI gives you $18 of
+                To start, you will need to submit you OpenAI API key. Don&apos;t
+                worry!!! This information is only stored in local state and can
+                be removed with a simple refresh of the screen. Without a real
+                key you wont be able to play this game. OpenAI gives you $18 of
                 credit to use over your first 3 months. Each question here takes
-                about 1-3 cents. NOT BAD!!
+                about 1-3 cents max. NOT BAD!!
                 <div className="tw-my-2 tw-text-white">
                     {' '}
-                    Dont have an API Key? no worries - set on one up{' '}
+                    Don&apos;t have an API Key? no worries - set one up{' '}
                     <a
                         className="tw-underline tw-cursor-pointer tw-text-gold-50"
                         target="_blank"
@@ -43,7 +43,8 @@ export const Welcome = ({
             </div>
 
             <div className="tw-my-6 tw-text-blue-10">
-                Sometimes the answers may not be perfect, but it tries its best!
+                Sometimes the answers may not be perfect, but it tries it&apos;s
+                best!
             </div>
             <div>
                 <input

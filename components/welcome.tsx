@@ -12,7 +12,7 @@ export const Welcome = ({
     return (
         <div className="tw-text-center md:tw-w-3/4 tw-text-[20px]">
             <div>
-                Welcome to Chat gpt trivia - a game were you can test your
+                Welcome to Chat gpt trivia - a game where you can test your
                 knowledge on anything!
             </div>
             <div className="tw-my-2">

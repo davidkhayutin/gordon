@@ -45,7 +45,22 @@ export const MainChatGame = ({ apiKey }: { apiKey: string }) => {
             setGameOver(false)
             setRegisterClick(false)
 
-            const promptToSend = `Please return to me an array of 10 different multiple choice questions, with a ${difficulty} difficulty level. Each question should have 4 possible answers but only one correct one. Each multiple choice question will be in the form of an object. The object will have a question attribute with the corresponding question. An answer attribute with the corresponding answer. And an options attribute which will have an array value of four different possible answers.The questions will be on the subject: ${prompt}. Please return the answers in a parsed javascript array, with each question being its own object, and having an "answer" attribute with the correct answer. Please use double quotes on all object keys. Please include some questions that could have multiple correct answers that can be answered with 'all of the above'.`
+            const promptToSend = `Please provide an array of 10 multiple choice questions with a ${difficulty} difficulty level, in the following format:
+            Copy code
+            [  {    "question": "Question 1",    "answer": "Correct answer",    "options": ["Option 1", "Option 2", "Option 3", "Option 4"]
+              },
+              {
+                "question": "Question 2",
+                "answer": "Correct answer",
+                "options": ["Option 1", "Option 2", "Option 3", "Option 4"]
+              },
+              ...
+            ]
+            The subject of the questions is ${prompt}.
+            
+            Please include at least 2 questions with multiple correct answers, denoted by "all of the above" option.
+            
+            Please return the result in a parsed javascript array.`
 
             try {
                 const response = await openai.createCompletion({

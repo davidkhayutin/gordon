@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
                 <Head />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Secular+One&display=swap&family=Montserrat"
+                    href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400&family=Poppins&family=Rubik+Dirt&family=Secular+One&display=swap"
                     rel="stylesheet"
                 />
                 <link

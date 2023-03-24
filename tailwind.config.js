@@ -14,7 +14,9 @@ module.exports = {
             'black-40': '#090b19',
             'red-50': '#DA3933',
             'grey-20': '#8d8d8d',
+            'grey-10': '#f7faff',
             'green-20': '#00FF00',
+            'purple-40': '#8144e5',
         },
         screens: {
             xs: '320px',
@@ -28,6 +30,8 @@ module.exports = {
                 'secular-one': ['"Secular One"'],
                 rubik: ['"Rubik Dirt"'],
                 montserrat: 'Montserrat',
+                overpass: 'Overpass',
+                poppins: 'Poppins',
             },
         },
     },

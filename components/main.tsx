@@ -1,37 +1,21 @@
 import React, { useState } from 'react'
 
-import { MainChatGame } from './chatGame'
-import { Welcome } from './welcome'
+import { Landing } from './landing'
 
 export const Main = () => {
-    const [prompt, setPrompt] = useState('')
-
-    const [apiKeyLoaded, setApiKey] = useState<boolean>(false)
-
-    const enterQuestion = async (e: any) => {
-        if (e.key === 'Enter') {
-            setApiKey(true)
-        }
-    }
     return (
-        <div className="tw-bg-blue-50 tw-min-h-[100vh] tw-flex tw-flex-col tw-items-center tw-w-full tw-font-montserrat tw-text-white tw-p-2">
-            <div className="tw-text-white tw-py-6 tw-text-center tw-text-[34px] tw-font-rubik">
-                Chat GPT Trivia
-            </div>
-            <div className="tw-text-white tw-py-6 tw-text-center tw-text-[24px]">
-                Challenge your expertise in{' '}
-                <span className="tw-underline">ANY</span> subject
-            </div>
+        <div className="tw-min-h-[100vh] tw-flex tw-flex-col tw-text-black-40 tw-bg-grey-10 tw-items-center tw-w-full tw-font-poppins tw-p-10">
+            <h1 className="tw-text-[34px]">Welcome to Gordon</h1>
+            <h4 className="tw-text-[18px]">Your personal sous chef</h4>
 
-            {!apiKeyLoaded ? (
-                <Welcome
-                    prompt={prompt}
-                    setPrompt={setPrompt}
-                    enterQuestion={enterQuestion}
-                />
-            ) : (
-                <MainChatGame apiKey={prompt} />
-            )}
+            <h4 className="tw-my-4">
+                Gordon uses Artificial Intelligence to help you on daily cooking
+                adventures. Whether it is your own recipe, or a your favorite
+                bloggers, Gordan is here to help
+            </h4>
+
+            <h4 className="tw-text-[18px]">How it works?</h4>
+            <Landing />
         </div>
     )
 }

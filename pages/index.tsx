@@ -3,7 +3,7 @@ import { Main } from '../components/main'
 import axios from 'axios'
 import { parse } from 'node-html-parser'
 
-const Home: NextPage = ({ payload }: { payload: string }) => {
+const Home: any = ({ payload }: { payload: string }) => {
     return (
         <>
             <title>Chat-GPT Trivia</title>
@@ -14,7 +14,7 @@ const Home: NextPage = ({ payload }: { payload: string }) => {
 
 export default Home
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
     const { data } = await axios.get(
         'https://www.allrecipes.com/recipe/247365/chef-johns-steak-diane/',
     )

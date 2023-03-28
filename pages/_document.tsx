@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head />
+
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;400&family=Poppins&family=Rubik+Dirt&family=Secular+One&display=swap"
@@ -33,6 +34,7 @@ export default class MyDocument extends Document {
                     href="/favicon-16x16.png"
                 />
                 <link rel="manifest" href="/site.webmanifest"></link>
+
                 <body>
                     <Main />
                     <NextScript />

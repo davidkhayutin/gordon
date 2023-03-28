@@ -1,12 +1,27 @@
 import type { NextPage } from 'next'
 import { Main } from '../components/main'
-const Home: NextPage = () => {
+import axios from 'axios'
+import { parse } from 'node-html-parser'
+
+const Home: NextPage = ({ payload }: { payload: string }) => {
     return (
         <>
             <title>Chat-GPT Trivia</title>
-            <Main />
+            <Main payload={payload} />
         </>
     )
 }
 
 export default Home
+
+export async function getServerSideProps(context) {
+    const { data } = await axios.get(
+        'https://www.allrecipes.com/recipe/247365/chef-johns-steak-diane/',
+    )
+
+    return {
+        props: {
+            payload: data,
+        }, // will be passed to the page component as props
+    }
+}

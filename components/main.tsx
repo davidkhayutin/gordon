@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Landing } from './landing'
 
-export const Main = () => {
+export const Main = ({ payload }: any) => {
     return (
         <div className="tw-min-h-[100vh] tw-flex tw-flex-col tw-text-black-40 tw-bg-grey-10 tw-items-center tw-w-full tw-font-poppins tw-p-10">
             <h1 className="tw-text-[34px]">Welcome to Gordon</h1>
@@ -15,7 +15,7 @@ export const Main = () => {
             </h4>
 
             <h4 className="tw-text-[18px]">How it works?</h4>
-            <Landing />
+            <Landing payload={payload} />
         </div>
     )
 }

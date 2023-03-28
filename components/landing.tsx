@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Script from 'next/script'
+
 import Image from 'next/image'
 import cn from 'classnames'
 import { FaLongArrowAltRight } from 'react-icons/fa'
@@ -6,6 +8,8 @@ import { makePrompt } from '../prompt'
 import { Configuration, OpenAIApi } from 'openai'
 import axios from 'axios'
 import parse from 'html-react-parser'
+import recipeDataScraper from 'recipe-data-scraper'
+import Artyom from 'artyom.js'
 
 interface Question {
     question: string
@@ -13,20 +17,79 @@ interface Question {
     options: string[]
 }
 
-export const Landing = () => {
+export const Landing = ({ payload }: any) => {
     const configuration = new Configuration({
         organization: '',
         apiKey: '',
     })
-
     const [loading, setLoading] = useState(false)
     const [prompt, setPrompt] = useState('')
     const [ingredients, setIngredients] = useState<[]>([])
     const [steps, setSteps] = useState<[]>([])
     const [errorRep, setErrorRep] = useState<string>('')
     const [parsedCode, setParsedCode] = useState<any>(undefined)
+    const [art, setArt] = useState<any>()
 
     const openai = new OpenAIApi(configuration)
+    // const parser = new DOMParser()
+    // const doc = parser.parseFromString(payload, 'text/html')
+    // console.log(doc.body.getElementsByTagName('main'))
+
+    let commandHello = {
+        indexes: ['hello', 'good morning', 'hey'], // These spoken words will trigger the execution of the command
+        action: function () {
+            // Action to be executed when a index match with spoken word
+            art?.say('Hey buddy ! How are you today?')
+        },
+    }
+
+    React.useEffect(() => {
+        if (window && !art) {
+            const Jarvis = new Artyom()
+
+            Jarvis.say('Hello World !')
+
+            const artyom = new Artyom()
+            artyom
+                .initialize({
+                    lang: 'en-GB', // A lot of languages are supported. Read the docs !
+                    continuous: true, // recognize 1 command and stop listening !
+                    listen: true, // Start recognizing
+                    debug: true, // Show everything in the console
+                    speed: 1, // talk normally
+                })
+                .then(function () {
+                    console.log('Ready to work !')
+                })
+                .catch((e: any) => console.log('errrrrror'))
+
+            artyom.addCommands(commandHello)
+            artyom.addCommands([
+                {
+                    indexes: ['Good morning'],
+                    action: function (i: any) {
+                        console.log('Good morning Triggered')
+                    },
+                },
+                {
+                    indexes: ['Good night'],
+                    action: function (i: any) {
+                        console.log('Good night Triggered')
+                    },
+                },
+            ])
+
+            // Or the artisan mode to write less
+
+            artyom.on(['Good morning']).then(function (i: any) {
+                console.log('Triggered')
+            })
+            setArt(artyom)
+            artyom.say('Hey buddy ! How are you today?')
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const enterQuestion = async (e: any) => {
         if (e.key === 'Enter') {
             setPrompt('')
@@ -35,13 +98,17 @@ export const Landing = () => {
 
             const promptToSend = `visit this url and return the recipe to me: ${prompt}`
             try {
-                const { data } = await axios.get(prompt)
-                const parser = new DOMParser()
-                const doc = parser.parseFromString(data, 'text/html')
-                const sectionElement = doc.body.innerHTML
+                console.log('sending>>>>')
 
-                console.log(sectionElement)
-                setParsedCode(sectionElement)
+                const recipe = await recipeDataScraper(prompt)
+
+                // const { data } = await axios.get(prompt)
+                // const parser = new DOMParser()
+                // const doc = parser.parseFromString(data, 'text/html')
+                // const sectionElement = doc.body.innerHTML
+
+                console.log({ recipe })
+                // setParsedCode(sectionElement)
                 // const response = await openai.createChatCompletion({
                 //     model: 'gpt-3.5-turbo',
                 //     messages: [
@@ -73,8 +140,10 @@ export const Landing = () => {
         }
     }
     console.log()
+
     return (
         <>
+            <Script src="artyom.window.min.js"></Script>
             <div className="tw-text-center md:tw-h-[470px]">
                 {errorRep && !loading && (
                     <div className="tw-text-red-50 tw-text-[24px] md:tw-w-2/4 tw-m-auto">
